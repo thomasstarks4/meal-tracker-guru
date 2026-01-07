@@ -36,7 +36,7 @@ const FavoritesManager = ({ onSelectMeal }) => {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="bg-pink-500 text-white px-6 py-2 rounded hover:bg-pink-700 focus:ring-2 focus:ring-pink-400 transition-all duration-300 border-2 border-pink-800"
+        className="bg-pink-500 text-white px-3 sm:px-6 py-2 text-sm sm:text-base rounded hover:bg-pink-700 focus:ring-2 focus:ring-pink-400 transition-all duration-300 border-2 border-pink-800"
       >
         ⭐ Favorites
       </button>

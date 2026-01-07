@@ -131,7 +131,7 @@ const Analytics = ({ currentDate }) => {
       <div className="mb-4 text-center">
         <button
           onClick={() => setIsOpen(true)}
-          className="bg-cyan-500 text-white px-6 py-2 rounded hover:bg-cyan-700 focus:ring-2 focus:ring-cyan-400 transition-all duration-300 border-2 border-cyan-800"
+          className="bg-cyan-500 text-white px-3 sm:px-6 py-2 text-sm sm:text-base rounded hover:bg-cyan-700 focus:ring-2 focus:ring-cyan-400 transition-all duration-300 border-2 border-cyan-800"
         >
           📈 Analytics
         </button>

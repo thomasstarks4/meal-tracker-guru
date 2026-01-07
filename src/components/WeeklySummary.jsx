@@ -37,7 +37,7 @@ const WeeklySummary = ({ currentDate }) => {
       <div className="mb-4 text-center">
         <button
           onClick={() => setIsOpen(true)}
-          className="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-700 focus:ring-2 focus:ring-green-400 transition-all duration-300 border-2 border-green-800"
+          className="bg-green-500 text-white px-3 sm:px-6 py-2 text-sm sm:text-base rounded hover:bg-green-700 focus:ring-2 focus:ring-green-400 transition-all duration-300 border-2 border-green-800"
         >
           📊 Weekly Summary
         </button>

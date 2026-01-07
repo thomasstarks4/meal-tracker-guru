@@ -49,7 +49,7 @@ const MacroTargets = ({ totals, calorieGoal }) => {
       <div className="mb-4 text-center">
         <button
           onClick={() => setIsOpen(true)}
-          className="bg-indigo-500 text-white px-6 py-2 rounded hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-400 transition-all duration-300 border-2 border-indigo-800"
+          className="bg-indigo-500 text-white px-3 sm:px-6 py-2 text-sm sm:text-base rounded hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-400 transition-all duration-300 border-2 border-indigo-800"
         >
           🎯 Macro Targets
         </button>

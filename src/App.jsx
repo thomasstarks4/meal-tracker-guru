@@ -122,10 +122,10 @@ const App = () => {
       : `You're ${totals.calories - calorieGoal} calories over your goal`;
 
   return (
-    <div className="min-h-screen bg-gray-300 dark:bg-gray-900 p-6 font-sans transition-colors duration-300">
+    <div className="min-h-screen bg-gray-300 dark:bg-gray-900 p-2 sm:p-6 font-sans transition-colors duration-300">
       <DarkModeToggle />
 
-      <h1 className="text-4xl font-bold text-center text-blue-900 dark:text-blue-300 w-full bg-blue-100 dark:bg-blue-900 rounded mb-4 mx-auto p-4 border-2 border-blue-800 dark:border-blue-600 shadow-lg">
+      <h1 className="text-2xl sm:text-4xl font-bold text-center text-blue-900 dark:text-blue-300 w-full bg-blue-100 dark:bg-blue-900 rounded mb-4 mx-auto p-2 sm:p-4 border-2 border-blue-800 dark:border-blue-600 shadow-lg">
         Meal Tracking Guru
       </h1>
 
@@ -133,7 +133,7 @@ const App = () => {
 
       <div className="max-w-4xl mx-auto">
         {/* Action buttons */}
-        <div className="flex flex-wrap gap-2 justify-center mb-6">
+        <div className="flex flex-wrap gap-2 justify-center mb-4 sm:mb-6">
           <HistoryView onDateSelect={setCurrentDate} />
           <WeeklySummary currentDate={currentDate} />
           <MacroTargets totals={totals} calorieGoal={calorieGoal} />
@@ -144,7 +144,7 @@ const App = () => {
               setSearchingMealIndex(null);
               setShowFoodSearch(true);
             }}
-            className="bg-teal-500 text-white px-6 py-2 rounded hover:bg-teal-700 focus:ring-2 focus:ring-teal-400 transition-all duration-300 border-2 border-teal-800"
+            className="bg-teal-500 text-white px-3 sm:px-6 py-2 text-sm sm:text-base rounded hover:bg-teal-700 focus:ring-2 focus:ring-teal-400 transition-all duration-300 border-2 border-teal-800"
           >
             🔍 Search Foods
           </button>
@@ -167,8 +167,8 @@ const App = () => {
           />
         </div>
 
-        <div className="bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg border-2 border-blue-800 dark:border-blue-600 p-6 mb-6 text-center hover:p-8 transition-all duration-300">
-          <h2 className="text-2xl font-bold text-blue-800 dark:text-blue-300 mb-4 text-center bg-blue-200 dark:bg-blue-900 shadow p-2 rounded">
+        <div className="bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg border-2 border-blue-800 dark:border-blue-600 p-3 sm:p-6 mb-4 sm:mb-6 text-center sm:hover:p-8 transition-all duration-300">
+          <h2 className="text-xl sm:text-2xl font-bold text-blue-800 dark:text-blue-300 mb-4 text-center bg-blue-200 dark:bg-blue-900 shadow p-2 rounded">
             Meals
           </h2>
           {meals.length === 0 ? (
@@ -179,109 +179,121 @@ const App = () => {
             meals.map((meal, index) => (
               <div
                 key={index}
-                className="grid grid-cols-11 gap-4 mb-4 last:mb-0 items-center text-center"
+                className="bg-white dark:bg-gray-700 p-3 rounded-lg mb-3 border-2 border-blue-200 dark:border-blue-600"
               >
-                <div className="col-span-1 flex items-end justify-center pb-2">
-                  <button
-                    onClick={() => {
-                      setSearchingMealIndex(index);
-                      setShowFoodSearch(true);
-                    }}
-                    className="bg-teal-500 text-white p-2 rounded hover:bg-teal-700 focus:ring-2 focus:ring-teal-400 transition-all duration-300"
-                    title="Search foods"
-                  >
-                    🔍
-                  </button>
-                </div>
-                <div className="col-span-2">
-                  <label className="block text-sm font-medium text-blue-800 dark:text-blue-300 mb-2">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Meal name"
-                    value={meal.name}
-                    onChange={(e) => updateMeal(index, "name", e.target.value)}
-                    className="w-full p-2 border border-blue-200 dark:border-blue-600 dark:bg-gray-700 dark:text-white shadow rounded focus:outline-none focus:ring-2 focus:ring-blue-400 hover:border-blue-400 hover:p-3 transition-all duration-300"
-                  />
-                </div>
-                <div className="col-span-2">
-                  <label className="block text-sm font-medium text-blue-800 dark:text-blue-300 mb-2">
-                    Protein
-                  </label>
-                  <input
-                    type="number"
-                    placeholder="Protein (g)"
-                    value={meal.protein}
-                    onChange={(e) =>
-                      updateMeal(index, "protein", e.target.value)
-                    }
-                    className="w-full p-2 border border-blue-200 dark:border-blue-600 dark:bg-gray-700 dark:text-white shadow rounded focus:outline-none focus:ring-2 focus:ring-blue-400 hover:border-blue-400 hover:p-3 transition-all duration-300"
-                  />
-                </div>
-                <div className="col-span-2">
-                  <label className="block text-sm font-medium text-blue-800 dark:text-blue-300 mb-2">
-                    Fat
-                  </label>
-                  <input
-                    type="number"
-                    placeholder="Fat (g)"
-                    value={meal.fat}
-                    onChange={(e) => updateMeal(index, "fat", e.target.value)}
-                    className="w-full p-2 border border-blue-200 dark:border-blue-600 dark:bg-gray-700 dark:text-white rounded shadow focus:outline-none focus:ring-2 focus:ring-blue-400 hover:border-blue-400 hover:p-3 transition-all duration-300"
-                  />
-                </div>
-                <div className="col-span-2">
-                  <label className="block text-sm font-medium text-blue-800 dark:text-blue-300 mb-2">
-                    Carbs
-                  </label>
-                  <input
-                    type="number"
-                    placeholder="Carbs (g)"
-                    value={meal.carbs}
-                    onChange={(e) => updateMeal(index, "carbs", e.target.value)}
-                    className="w-full p-2 border border-blue-200 dark:border-blue-600 dark:bg-gray-700 dark:text-white rounded shadow focus:outline-none focus:ring-2 focus:ring-blue-400 hover:border-blue-400 hover:p-3 transition-all duration-300"
-                  />
-                </div>
-                <div className="flex items-center flex-col col-span-1">
-                  <label className="block text-sm font-medium text-blue-800 dark:text-blue-300 mb-2">
-                    Calories
-                  </label>
-                  <div className="w-full text-center text-blue-900 dark:text-blue-300 font-medium">
-                    {meal.protein * 4 + meal.fat * 9 + meal.carbs * 4} cal
+                {/* Mobile: Stack vertically, Desktop: Grid layout */}
+                <div className="flex flex-col sm:grid sm:grid-cols-11 gap-2 sm:gap-4 sm:items-center">
+                  {/* Search button and Name - Mobile: row, Desktop: separate columns */}
+                  <div className="flex gap-2 sm:contents">
+                    <button
+                      onClick={() => {
+                        setSearchingMealIndex(index);
+                        setShowFoodSearch(true);
+                      }}
+                      className="bg-teal-500 text-white p-2 rounded hover:bg-teal-700 focus:ring-2 focus:ring-teal-400 transition-all duration-300 flex-shrink-0 sm:col-span-1 sm:self-end sm:mb-2"
+                      title="Search foods"
+                    >
+                      🔍
+                    </button>
+                    <div className="flex-1 sm:col-span-2">
+                      <label className="block text-xs sm:text-sm font-medium text-blue-800 dark:text-blue-300 mb-1">
+                        Name
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="Meal name"
+                        value={meal.name}
+                        onChange={(e) => updateMeal(index, "name", e.target.value)}
+                        className="w-full p-2 text-sm border border-blue-200 dark:border-blue-600 dark:bg-gray-700 dark:text-white shadow rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-center justify-center gap-1 col-span-1 ml-4 mt-5">
-                  <button
-                    onClick={() => saveMealAsFavorite(meal)}
-                    className="bg-pink-500 text-white p-1.5 rounded hover:bg-pink-700 focus:ring-2 border-2 border-pink-800 focus:ring-pink-400 hover:p-2 transition-all duration-300"
-                    title="Save as favorite"
-                  >
-                    ⭐
-                  </button>
-                  <button
-                    onClick={() => deleteMeal(index)}
-                    className="bg-red-600 text-white p-1.5 rounded hover:bg-red-700 focus:ring-2 border-2 border-red-800 focus:ring-red-400 hover:p-2 transition-all duration-300"
-                  >
-                    X
-                  </button>
+
+                  {/* Macros - Mobile: 3 columns, Desktop: separate columns */}
+                  <div className="grid grid-cols-3 gap-2 sm:contents">
+                    <div className="sm:col-span-2">
+                      <label className="block text-xs sm:text-sm font-medium text-blue-800 dark:text-blue-300 mb-1">
+                        Protein
+                      </label>
+                      <input
+                        type="number"
+                        placeholder="P (g)"
+                        value={meal.protein}
+                        onChange={(e) =>
+                          updateMeal(index, "protein", e.target.value)
+                        }
+                        className="w-full p-2 text-sm border border-blue-200 dark:border-blue-600 dark:bg-gray-700 dark:text-white shadow rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+                      />
+                    </div>
+                    <div className="sm:col-span-2">
+                      <label className="block text-xs sm:text-sm font-medium text-blue-800 dark:text-blue-300 mb-1">
+                        Fat
+                      </label>
+                      <input
+                        type="number"
+                        placeholder="F (g)"
+                        value={meal.fat}
+                        onChange={(e) => updateMeal(index, "fat", e.target.value)}
+                        className="w-full p-2 text-sm border border-blue-200 dark:border-blue-600 dark:bg-gray-700 dark:text-white rounded shadow focus:outline-none focus:ring-2 focus:ring-blue-400"
+                      />
+                    </div>
+                    <div className="sm:col-span-2">
+                      <label className="block text-xs sm:text-sm font-medium text-blue-800 dark:text-blue-300 mb-1">
+                        Carbs
+                      </label>
+                      <input
+                        type="number"
+                        placeholder="C (g)"
+                        value={meal.carbs}
+                        onChange={(e) => updateMeal(index, "carbs", e.target.value)}
+                        className="w-full p-2 text-sm border border-blue-200 dark:border-blue-600 dark:bg-gray-700 dark:text-white rounded shadow focus:outline-none focus:ring-2 focus:ring-blue-400"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Calories and actions - Mobile: row, Desktop: separate columns */}
+                  <div className="flex justify-between items-center sm:contents mt-2 sm:mt-0">
+                    <div className="sm:col-span-1 sm:self-end sm:mb-2">
+                      <label className="block text-xs sm:text-sm font-medium text-blue-800 dark:text-blue-300 mb-1">
+                        Cal
+                      </label>
+                      <div className="text-sm sm:text-base text-blue-900 dark:text-blue-300 font-medium">
+                        {meal.protein * 4 + meal.fat * 9 + meal.carbs * 4}
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-1 sm:col-span-1 sm:self-end sm:mb-2">
+                      <button
+                        onClick={() => saveMealAsFavorite(meal)}
+                        className="bg-pink-500 text-white p-1.5 rounded hover:bg-pink-700 focus:ring-2 border-2 border-pink-800 focus:ring-pink-400 transition-all duration-300"
+                        title="Save as favorite"
+                      >
+                        ⭐
+                      </button>
+                      <button
+                        onClick={() => deleteMeal(index)}
+                        className="bg-red-600 text-white p-1.5 rounded hover:bg-red-700 focus:ring-2 border-2 border-red-800 focus:ring-red-400 transition-all duration-300"
+                      >
+                        X
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             ))
           )}
           <button
             onClick={addMeal}
-            className="mt-4 bg-blue-500 text-white p-4 border-2 border-blue-800  rounded hover:bg-blue-700 focus:ring-2 focus:ring-blue-400 hover:p-6 transition-all duration-300"
+            className="mt-4 bg-blue-500 text-white p-3 sm:p-4 border-2 border-blue-800 rounded hover:bg-blue-700 focus:ring-2 focus:ring-blue-400 sm:hover:p-6 transition-all duration-300 w-full sm:w-auto"
           >
             Add a meal!
           </button>
         </div>
 
-        <div className="bg-gray-50 dark:bg-gray-800 rounded-lg shadow border-2 border-blue-800 dark:border-blue-600 p-6 hover:p-8 transition-all duration-300">
-          <h2 className="text-2xl font-bold text-blue-800 dark:text-blue-300 mb-4 text-center bg-blue-200 dark:bg-blue-900 shadow p-2 rounded">
+        <div className="bg-gray-50 dark:bg-gray-800 rounded-lg shadow border-2 border-blue-800 dark:border-blue-600 p-3 sm:p-6 sm:hover:p-8 transition-all duration-300">
+          <h2 className="text-xl sm:text-2xl font-bold text-blue-800 dark:text-blue-300 mb-4 text-center bg-blue-200 dark:bg-blue-900 shadow p-2 rounded">
             Overview
           </h2>
-          <div className="flex justify-between items-center mb-4">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
             <div>
               <h2 className="text-xl font-semibold text-blue-800 dark:text-blue-300 mb-2">
                 Total Calories Consumed: {totals.calories}
